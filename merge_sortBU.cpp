@@ -57,14 +57,14 @@ void mergeSortBU2(int arr[], int n){
 }
 
 
-int main(){
-	int arr[11] = {52,6,4,12,3,5,2,7,98,1,66};
-	mergeSortBU2(arr, 11);
-	for(int i=0;i<11;i++){
-		cout<<arr[i]<<endl;
-	}
-    return 0;
-}
+//int main(){
+//	int arr[11] = {52,6,4,12,3,5,2,7,98,1,66};
+//	mergeSortBU2(arr, 11);
+//	for(int i=0;i<11;i++){
+//		cout<<arr[i]<<endl;
+//	}
+//    return 0;
+//}
 
 
 

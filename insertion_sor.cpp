@@ -77,11 +77,11 @@ void insertionSort5(int arr[], int n){
 } 
 
 
-int main(){
-	int arr[10] = {52,6,4,12,1,5,2,7,98,1};
-	insertionSort5(arr, 10);
-	for(int i=0;i<10;i++){
-		cout<<arr[i]<<endl;
-	}
-    return 0;
-}
+//int main(){
+//	int arr[10] = {52,6,4,12,1,5,2,7,98,1};
+//	insertionSort5(arr, 10);
+//	for(int i=0;i<10;i++){
+//		cout<<arr[i]<<endl;
+//	}
+//    return 0;
+//}
