@@ -4,13 +4,14 @@
 #include "QuickSort.h"
 #include <iostream>
 #include "SortTestHelper.h"
+#include "insertionSort.h"
 
 
 using namespace std;
 int main(){
     int n=20;
     int* arr = SortTestHelper::generateRandomArray(n, 5, 60);
-	QuickSort(arr, n);
+	insertionSort(arr, n);
 	SortTestHelper::printArray(arr, n);
     delete [] arr;
     return 0;
