@@ -5,13 +5,15 @@
 #include <iostream>
 #include "SortTestHelper.h"
 #include "insertionSort.h"
+#include "QuickSort3Ways.h"
+#include "merge_sort.h"
 
 
 using namespace std;
 int main(){
-    int n=20;
+    int n=100;
     int* arr = SortTestHelper::generateRandomArray(n, 5, 60);
-	insertionSort(arr, n);
+	mergeSort(arr, n);
 	SortTestHelper::printArray(arr, n);
     delete [] arr;
     return 0;

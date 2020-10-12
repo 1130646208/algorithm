@@ -38,6 +38,7 @@ void __merge(int arr[], int l, int mid, int r){
 }
 
 void mergeSortBU(int arr[], int n){
+
 	
 	for (int size=1; size<n; size += size){
 		for (int i=0; i+size<n; i += size+size){
