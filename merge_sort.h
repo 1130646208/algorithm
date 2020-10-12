@@ -68,14 +68,24 @@ void __merge(int arr[], int l, int mid, int r){
     for (int i=0; i<r-l+1; i++){
         aux[i] = arr[i+l];
     }
-    int i = 0;
-    int j = mid - l;
+    
+    int i = l;
+    int j = mid+1;
     for (int k=l; k<=r; k++){
-        if (aux[i] < aux[j]){
-            arr[k] = aux[i];
+    	
+    	if (i > mid){
+        	arr[k] = aux[j-l];
+        	j++;
+		}
+		else if (j > r){
+			arr[k] = aux[i-l];
+			i++;
+		}
+        else if (aux[i-l] < aux[j-l]){
+            arr[k] = aux[i-l];
             i++;
         }else{
-            arr[k] = aux[j];
+            arr[k] = aux[j-l];
             j++;
         }
     }
@@ -83,14 +93,24 @@ void __merge(int arr[], int l, int mid, int r){
 
 
 void __mergeSort(int arr[], int  l, int r){
-    int mid = (l + r) / 2;
+    
     if (l >= r) return;
-
+	int mid = (l + r) / 2;
+	
     __mergeSort(arr, l, mid);
     __mergeSort(arr, mid+1, r);
     __merge(arr, l, mid, r);
 }
 
+
+
 void mergeSort(int arr[], int n){
     __mergeSort(arr, 0, n-1);
 }
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 
 using namespace std;
 int main(){
-    int n=100;
+    int n=20;
     int* arr = SortTestHelper::generateRandomArray(n, 5, 60);
 	mergeSort(arr, n);
 	SortTestHelper::printArray(arr, n);
