@@ -56,7 +56,7 @@ using namespace std;
 //
 //}
 //
-////а╥о╟
+////*************************************ртоба╥о╟
 //void insertionSort5(int arr[], int n){
 //
 //	for (int i=1;i<n;i++){
@@ -75,16 +75,29 @@ using namespace std;
 //
 //}
 
+//void insertionSort(int arr[], int n){
+//    for (int i=1; i<=n-1; i++){
+//        int cv = arr[i];
+//        int j;
+//        for (j=i; j>0; j--){
+//            if (cv < arr[j-1]){
+//                arr[j] = arr[j-1];
+//            }
+//            else break;
+//        }
+//        arr[j] = cv;
+//    }
+//}
+
 void insertionSort(int arr[], int n){
-    for (int i=1; i<=n-1; i++){
-        int cv = arr[i];
-        int j;
-        for (j=i; j>0; j--){
-            if (cv < arr[j-1]){
-                arr[j] = arr[j-1];
+    for (int i=1; i<n;i++){
+        int v = arr[i];
+        for (int j=i;j>0;j--){
+            if (v < arr[j-1]){
+                swap(arr[j-1], arr[j]);
+            }else{
+                break;
             }
-            else break;
         }
-        arr[j] = cv;
     }
 }

@@ -3,4 +3,4 @@ project(algorithm)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(algorithm main.cpp funs.h SortTestHelper.h QuickSort.h)
+add_executable(algorithm main.cpp SortTestHelper.h QuickSort.h)
