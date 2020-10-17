@@ -76,12 +76,10 @@ void __merge(int arr[], int l, int mid, int r){
     	if (i > mid){
         	arr[k] = aux[j-l];
         	j++;
-		}
-		else if (j > r){
+		}else if (j > r){
 			arr[k] = aux[i-l];
 			i++;
-		}
-        else if (aux[i-l] < aux[j-l]){
+		}else if (aux[i-l] < aux[j-l]){
             arr[k] = aux[i-l];
             i++;
         }else{
