@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <queue>
 template<typename Key, typename Value>
 
 class BST{
@@ -60,6 +61,25 @@ public:
         postOrder(root);
     }
 
+	void levelOrder(){
+		std::queue<Node* > q;
+		q.push(root);
+		
+		while(!q.empty()){
+			Node* node = q.front();
+			q.pop();
+			std::cout<< node->key<<" "; 
+			if (node->left){
+				q.push(node->left);
+			}
+			if (node->right){
+				q.push(node->right);
+			}
+		}
+		
+	} 
+	
+	
 private:
     void preOrder(Node* node){
         if (node != NULL){
@@ -142,5 +162,7 @@ int main() {
     bst.inOrder();
     cout<< endl << "postOrder:" <<" ";
     bst.postOrder();
+    cout<< endl << "levelOrder:" <<" ";
+    bst.levelOrder();
     return 0;
 }
