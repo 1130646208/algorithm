@@ -1,7 +1,7 @@
 #include <iostream>
-
-
+#include <cassert>
 template<typename Key, typename Value>
+
 class BST{
 private:
     struct Node{
@@ -37,10 +37,75 @@ public:
     }
 
     void insert(Key key, Value value){
-        insert(root, key, value);
+        //坑
+        root = insert(root, key, value);
+    }
+
+
+    Value* search(Key key){
+        return search(root, key);
+    }
+
+    bool contain(Key key){
+        return contain(root, key) != NULL;
+    }
+
+    void preOrder(){
+        preOrder(root);
+    }
+    void inOrder(){
+        inOrder(root);
+    }
+    void postOrder(){
+        postOrder(root);
     }
 
 private:
+    void preOrder(Node* node){
+        if (node != NULL){
+            std::cout << node->key << " ";
+            preOrder(node->left);
+            preOrder(node->right);
+        }
+    }
+    void inOrder(Node* node){
+        if (node != NULL){
+            inOrder(node->left);
+            std::cout << node->key << " ";
+            inOrder(node->right);
+        }
+    }
+
+    void postOrder(Node* node){
+        if (node != NULL){
+            postOrder(node->left);
+            postOrder(node->right);
+            std::cout << node->key << " ";
+        }
+    }
+
+    Key* contain(Node* node, Key key){
+        if (node == NULL)
+            return NULL;
+        else if (node->key == key)
+            return &(node->key);
+        else if (node->key > key)
+            return contain(node->left, key);
+        else
+            return contain(node->right, key);
+    }
+
+    Value* search(Node* node, Key key){
+        if (node == NULL){
+            return NULL;
+        }else if(key == node->key){
+            return &(node->value);
+        }else if(key > node->key){
+            return search(node->right, key);
+        }else{
+            return search(node->left, key);
+        }
+    }
 
     Node* insert(Node* node, Key key, Value value){
         if(node == NULL){
@@ -49,7 +114,7 @@ private:
         }
         if(key == node->key){
             node->value = value;
-        }else if (value < node->value){
+        }else if (key < node->key){//坑
             node->left = insert(node->left, key, value);
         }else{
             node->right = insert(node->right, key, value);
@@ -57,9 +122,25 @@ private:
         return node;
     }
 };
-
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    BST<int, string> bst = BST<int, string>();
+    bst.insert(22, "22");
+    bst.insert(11, "11");
+    bst.insert(5, "5");
+    bst.insert(13, "13");
+    bst.insert(33, "33");
+    bst.insert(25, "25");
+    bst.insert(35, "35");
+    cout << bst.search(35) <<endl;
+    assert(bst.contain(35));
+
+    cout<< endl <<"preOrder:" <<" ";
+    bst.preOrder();
+    cout<< endl << "inOrder:" <<" ";
+    bst.inOrder();
+    cout<< endl << "postOrder:" <<" ";
+    bst.postOrder();
     return 0;
 }
