@@ -76,11 +76,50 @@ public:
 				q.push(node->right);
 			}
 		}
-		
 	} 
+	
+	void removeMin(){
+		if (root)
+			root = removeMin(root);
+	}
+	
+	void removeMax(){
+		if(root)
+			root = removeMax(root);
+	}
+
+	
 	
 	
 private:
+	
+	//删除以node为根的二分搜索树中的最小节点
+	//返回删除节点后新的二分搜索树的根 
+	Node* removeMin(Node * node){
+		if (node->left == NULL){
+			Node* rightNode = node->right;
+			delete node;
+			count --;
+			return rightNode;
+		}
+		
+		node->left = removeMin(node->left); 
+		return node;
+		
+	}
+	
+	Node* removeMax(Node * node){
+		if (node->right == NULL){
+			Node *leftNode = node->left;
+			delete node;
+			count --;
+			return leftNode;
+		}
+		
+		node->right = removeMax(node->right);
+		return node;
+	}
+		
     void preOrder(Node* node){
         if (node != NULL){
             std::cout << node->key << " ";
@@ -163,6 +202,14 @@ int main() {
     cout<< endl << "postOrder:" <<" ";
     bst.postOrder();
     cout<< endl << "levelOrder:" <<" ";
+    bst.levelOrder();
+    
+    cout<< endl << "after removeMin:" <<" ";
+    bst.removeMin();
+    bst.levelOrder();
+    
+    cout<< endl << "after removeMax:" <<" ";
+    bst.removeMax();
     bst.levelOrder();
     return 0;
 }
